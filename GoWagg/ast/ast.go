@@ -1,7 +1,7 @@
 package ast
 
 import (
-	"wagg/token"
+	"Wagg/GoWagg/token"
 )
 
 type Node interface {

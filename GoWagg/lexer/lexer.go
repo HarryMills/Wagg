@@ -1,7 +1,7 @@
 package lexer
 
 import (
-	"wagg/token"
+	"Wagg/GoWagg/token"
 )
 
 type Lexer struct {

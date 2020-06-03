@@ -1,10 +1,10 @@
 package main
 
 import (
+	"Wagg/GoWagg/repl"
 	"fmt"
 	"os"
 	"os/user"
-	"wagg/repl"
 )
 
 func main() {

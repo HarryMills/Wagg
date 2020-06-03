@@ -1,9 +1,9 @@
 package parser
 
 import (
+	"Wagg/GoWagg/ast"
+	"Wagg/GoWagg/lexer"
 	"testing"
-	"wagg/ast"
-	"wagg/lexer"
 )
 
 func TestLetStatements(t *testing.T) {

@@ -9,9 +9,9 @@ Wagg programming language interpreter written in Go
 
  - C-like syntax in Doggo Language!
  - Variable bindings (Boops)
- - Integers (Pupper) and Booleans (Bois)
+ - Integers (Puppers) and Booleans (Bois)
  - Arithmetic expressions
- - Built-in functions (floofs)
+ - Built-in functions (Floofs)
  - First-class and higher-order floofs
  - Closures
  - A string (Woofer) data structure
@@ -37,8 +37,8 @@ Yapper support:
 
 Accessing elements in Doggos and Yappers are done with index expressions:
 
-	myDoggo[0]		// => 1
-	lucky["name"]	// => "Lucky"
+	myDoggo[0]      // => 1
+	lucky["name"]   // => "Lucky"
 
 Boop can also be used to bind floofs to names:  
 	

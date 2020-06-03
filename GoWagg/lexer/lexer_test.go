@@ -1,8 +1,8 @@
 package lexer
 
 import (
+	"Wagg/GoWagg/token"
 	"testing"
-	"wagg/token"
 )
 
 // Test 1 - First test

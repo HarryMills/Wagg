@@ -1,9 +1,9 @@
 package parser
 
 import (
-	"wagg/ast"
-	"wagg/lexer"
-	"wagg/token"
+	"Wagg/GoWagg/ast"
+	"Wagg/GoWagg/lexer"
+	"Wagg/GoWagg/token"
 
 	"fmt"
 )
