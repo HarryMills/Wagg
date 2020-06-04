@@ -1,4 +1,4 @@
-from PyWagg.token import token
+from PyWagg.tokens import tokens
 
 
 class Lexer:
@@ -22,52 +22,52 @@ class Lexer:
                 ch = self.ch
                 self.read_char()
                 literal = ch + self.ch
-                tok = new_token(token.EQ, literal)
+                tok = new_token(tokens.EQ, literal)
             else:
-                tok = new_token(token.ASSIGN, self.ch)
+                tok = new_token(tokens.ASSIGN, self.ch)
         elif self.ch == ';':
-            tok = new_token(token.SEMICOLON, self.ch)
+            tok = new_token(tokens.SEMICOLON, self.ch)
         elif self.ch == '(':
-            tok = new_token(token.LPAREN, self.ch)
+            tok = new_token(tokens.LPAREN, self.ch)
         elif self.ch == ')':
-            tok = new_token(token.RPAREN, self.ch)
+            tok = new_token(tokens.RPAREN, self.ch)
         elif self.ch == ',':
-            tok = new_token(token.COMMA, self.ch)
+            tok = new_token(tokens.COMMA, self.ch)
         elif self.ch == '+':
-            tok = new_token(token.PLUS, self.ch)
+            tok = new_token(tokens.PLUS, self.ch)
         elif self.ch == '-':
-            tok = new_token(token.MINUS, self.ch)
+            tok = new_token(tokens.MINUS, self.ch)
         elif self.ch == '!':
             if self.peek_char() == '=':
                 ch = self.ch
                 self.read_char()
                 literal = ch + self.ch
-                tok = new_token(token.NOT_EQ, literal)
+                tok = new_token(tokens.NOT_EQ, literal)
             else:
-                tok = new_token(token.BANG, self.ch)
+                tok = new_token(tokens.BANG, self.ch)
         elif self.ch == '/':
-            tok = new_token(token.SLASH, self.ch)
+            tok = new_token(tokens.SLASH, self.ch)
         elif self.ch == '*':
-            tok = new_token(token.ASTERISK, self.ch)
+            tok = new_token(tokens.ASTERISK, self.ch)
         elif self.ch == '<':
-            tok = new_token(token.LT, self.ch)
+            tok = new_token(tokens.LT, self.ch)
         elif self.ch == '>':
-            tok = new_token(token.GT, self.ch)
+            tok = new_token(tokens.GT, self.ch)
         elif self.ch == '{':
-            tok = new_token(token.LBRACE, self.ch)
+            tok = new_token(tokens.LBRACE, self.ch)
         elif self.ch == '}':
-            tok = new_token(token.RBRACE, self.ch)
+            tok = new_token(tokens.RBRACE, self.ch)
         elif self.ch == 0:
-            tok = new_token(token.EOF, "")
+            tok = new_token(tokens.EOF, "")
         else:
             if is_letter(self.ch):
                 literal = self.read_identifier()
-                type = token.lookup_ident(literal)
+                type = tokens.lookup_ident(literal)
                 return new_token(type, literal)
             elif is_digit(self.ch):
-                return new_token(token.INT, self.read_number())
+                return new_token(tokens.INT, self.read_number())
             else:
-                tok = new_token(token.ILLEGAL, self.ch)
+                tok = new_token(tokens.ILLEGAL, self.ch)
 
         self.read_char()
         return tok
@@ -88,7 +88,7 @@ class Lexer:
 
     def read_number(self):
         position = self.position
-        while self.position != 0 and is_digit(self.position):
+        while self.position != 0 and is_digit(self.ch):
             self.read_char()
         return self.input[position:self.position]
 
@@ -108,11 +108,11 @@ def is_letter(ch):
 
 
 def is_digit(ch):
-    return '0' <= ch <= '9'
+    return '0' <= ch and ch <= '9'
 
 
 def new_token(token_type, ch):
-    return token.Token(token_type, ch)
+    return tokens.Token(token_type, ch)
 
 
 def new(source):
