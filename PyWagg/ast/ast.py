@@ -30,6 +30,12 @@ class Program:
         else:
             return ""
 
+    def string(self):
+        out = ""
+        for s in self.statements:
+            out = out + s.string()
+        return out
+
 
 class Identifier(Expression):
     token = None
@@ -59,6 +65,17 @@ class LetStatement(Statement):
     def token_literal(self):
         return self.token.Literal
 
+    def string(self):
+        out = self.token_literal() + " "
+        out = out + self.name.string()
+        out = out + " = "
+
+        if self.value is not None:
+            out = out + self.value.string()
+
+        out = out + ";"
+        return out
+
 
 class ReturnStatement(Statement):
     token = None
@@ -70,3 +87,29 @@ class ReturnStatement(Statement):
 
     def token_literal(self):
         return self.token.Literal
+
+    def string(self):
+        out = self.token.Literal + " "
+
+        if self.return_value is not None:
+            out = out + self.return_value.string()
+
+        out = out + ";"
+        return out
+
+
+class ExpressionStatement(Statement):
+    token = None
+    expression = None
+
+    def __init__(self, token=None, expression=None):
+        self.token = token
+        self.expression = expression
+
+    def token_literal(self):
+        return self.token.Literal
+
+    def string(self):
+        if self.expression is not None:
+            return self.expression.string()
+        return ""

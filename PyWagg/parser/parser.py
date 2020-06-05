@@ -49,6 +49,16 @@ class Parser:
 
         return stmt
 
+    def parse_return_statement(self):
+        stmt = ast.ReturnStatement(self.curToken)
+        self.next_token()
+
+        # TODO: Skipping the expression until we encounter a semicolon
+        while not self.cur_token_is(tokens.SEMICOLON):
+            self.next_token()
+
+        return stmt
+
     def cur_token_is(self, t):
         return self.curToken.Type == t
 

@@ -13,15 +13,31 @@ class ParserTest(unittest.TestCase):
             ("boop y = 10;", "y", 10),
             ("boop foobar = 838383;", "foobar", 838383),
         ]
-
         for t in tests:
-            l = lexer.new(t[0])
-            p = parser.new(l)
-            program = p.parse_program()
-            self.check_parse_errors(p)
-            stmt = program.statements[0]
-            if not self.check_let_statement(stmt, t[1]):
-                return
+            with self.subTest(test_case=t):
+                l = lexer.new(t[0])
+                p = parser.new(l)
+                program = p.parse_program()
+                self.check_parse_errors(p)
+                stmt = program.statements[0]
+                if not self.check_let_statement(stmt, t[1]):
+                    return
+
+    def test_return_statements(self):
+        tests = [
+            ("bork 5;", 5),
+            ("bork 10;", 10),
+            ("bork 993322;", 993322),
+        ]
+        for t in tests:
+            with self.subTest(test_case=t):
+                l = lexer.new(t[0])
+                p = parser.new(l)
+                program = p.parse_program()
+                self.check_parse_errors(p)
+                stmt = program.statements[0]
+                if not self.check_return_statement(stmt, t[1]):
+                    return
 
     def check_parse_errors(self, p):
         errors = p.errors
@@ -47,6 +63,10 @@ class ParserTest(unittest.TestCase):
             return False
         return True
 
-
-if __name__ == '__main__':
-    unittest.main()
+    def check_return_statement(self, s, name):
+        if s.token_literal() != 'bork':
+            print("s.token_literal not 'bork'. got={}".format(s.token_literal()))
+            return False
+        if not isinstance(s, ast.ReturnStatement):
+            print("s is not a ast.ReturntStatement. got={}".format(type(s)))
+            return False

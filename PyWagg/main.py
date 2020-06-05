@@ -6,8 +6,8 @@ from PyWagg import tokens
 def main():
     user = getpass.getuser()
     print(tokens.keywords.get("floof"))
-    print("Hello %s! This is the Wagg programming language!\n" % user)
-    print("Feel free to type in commands\n")
+    print("Hello %s! This is the Wagg programming language!" % user)
+    print("Feel free to type in commands:")
     repl.start()
 
 
