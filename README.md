@@ -2,7 +2,7 @@
   
 -----------------------------  
   
-Wagg programming language interpreter written in Go  
+Wagg programming language interpreter tippy tapped in Go/Python
 
 
 ### Features  
