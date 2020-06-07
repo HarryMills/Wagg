@@ -21,3 +21,7 @@ class ASTTest(unittest.TestCase):
         ])
         self.assertEqual(program.string(), "boop myVar = anotherVar;",
              msg="program.string() wrong. Got={}".format(program.string()))
+
+
+if __name__ == "__main__":
+    unittest.main()

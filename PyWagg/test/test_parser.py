@@ -1,5 +1,4 @@
 import unittest
-from PyWagg import tokens
 from PyWagg import lexer
 from PyWagg import ast
 from PyWagg import parser
