@@ -27,6 +27,4 @@ jobs:
     - name: Test with unittest
       working-directory: ${{ github.workspace }}
       run: | 
-        ls -la
         python -m unittest discover -s ./PyWagg/test/ -p test_*.py
-  
