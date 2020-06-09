@@ -28,5 +28,5 @@ jobs:
       working-directory: ${{ github.workspace }}
       run: | 
         ls -la
-        python3 -m unittest discover -p 'test_*.py'
+        python -m unittest discover -s ./PyWagg/test/ -p test_*.py
   
