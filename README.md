@@ -5,6 +5,8 @@
 Wagg programming language interpreter tippy tapped in Go/Python
 
 
+![](https://github.com/HarryMills/Wagg/workflows/.github/workflows/python-app.yml/badge.svg)
+
 ### Features  
 
  - C-like syntax in Doggo Language!
