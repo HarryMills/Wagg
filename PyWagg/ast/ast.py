@@ -3,16 +3,19 @@ from PyWagg.tokens import Token
 
 class Node:
     def token_literal(self): pass
+
     def string(self): pass
 
 
 class Statement(Node):
     node = None
+
     def statement_node(self): pass
 
 
 class Expression(Node):
     node = None
+
     def expression_node(self): pass
 
 
@@ -113,3 +116,18 @@ class ExpressionStatement(Statement):
         if self.expression is not None:
             return self.expression.string()
         return ""
+
+
+class IntegerLiteral(Expression):
+    token = None
+    value = 0
+
+    def __init__(self, token=None, value=0):
+        self.token = token
+        self.value = value
+
+    def token_literal(self):
+        return self.token.Literal
+
+    def string(self):
+        return self.value

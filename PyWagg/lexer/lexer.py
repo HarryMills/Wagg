@@ -88,7 +88,7 @@ class Lexer:
 
     def read_number(self):
         position = self.position
-        while self.position != 0 and is_digit(self.ch):
+        while self.ch != 0 and is_digit(self.ch):
             self.read_char()
         return self.input[position:self.position]
 
